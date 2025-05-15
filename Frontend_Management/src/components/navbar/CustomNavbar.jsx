@@ -1,12 +1,16 @@
 import React from "react";
+import { useState } from "react";
+
 import NavItem from "./NavItem";
 import { FaHome, FaBookOpen, FaGamepad, FaPrint, FaUserShield, FaStar } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi"; // Thay thế avatar bằng icon tương tự
 import { useLocation } from "react-router-dom";
+import ParentsMenu from "./ParentsMenu";
 
 const CustomNavbar = ({ isCompact }) => {
   const location = useLocation();
   const currentPath = location.pathname;
+  const [showParentsMenu, setShowParentsMenu] = useState(false);
 
   return (
     <div
@@ -18,6 +22,7 @@ const CustomNavbar = ({ isCompact }) => {
       {/* Left section */}
       <div className={`flex ${isCompact ? 'flex-row items-center space-x-4 pl-8' : 'flex-col items-start space-y-6 pl-8'}`}>
         <button
+          onClick={() => setShowParentsMenu(true)}
           className={`rounded-full flex items-center justify-center shadow-md transition-all duration-500 ${
             isCompact
               ? "w-12 h-12 bg-[#3535a5] p-0"
@@ -100,8 +105,10 @@ const CustomNavbar = ({ isCompact }) => {
             <span className="text-cyan-200 text-sm">Free activities left today!</span>
           </div>
         )}
-      </div>
+              </div>
+      {showParentsMenu && <ParentsMenu onClose={() => setShowParentsMenu(false)} />}
     </div>
+    
   );
 };
 

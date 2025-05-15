@@ -62,12 +62,12 @@ export const CurriculumPage = () => {
         const navbarHeight = navbar ? navbar.offsetHeight : 100;
 
         const elementPosition = element.getBoundingClientRect().top;
-        //const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight + 20; // Thêm 20px padding
         const startPosition = window.pageYOffset;
         const distance = offsetPosition - startPosition;
         const duration = 1000;
         let start = null;
-        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight + 20; // Thêm 20px padding
+        
         const animation = (currentTime) => {
             if (start === null) start = currentTime;
             const timeElapsed = currentTime - start;

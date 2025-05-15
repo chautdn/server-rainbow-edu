@@ -11,10 +11,18 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import {LandingPage} from "./pages/LandingPage/LandingPage";
 import {HomePage} from "./pages/HomePage/HomePage";
 import {CurriculumPage} from "./pages/CurriculumPage/CurriculumPage";
-
+import {GameZonePage} from "./pages/GameZonePage/GameZonePage";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
+import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
 function App() {
   const location = useLocation();
-  const isNoFloating = location.pathname === "/curriculum" || location.pathname === "/home";
+  const isNoFloating = [
+    "/curriculum", 
+    "/home", 
+    "/game-zone", 
+    "/settings", 
+    "/parent-dashboard"
+  ].includes(location.pathname);
 
   return (
     <div
@@ -63,6 +71,9 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
+        <Route path="/game-zone" element={<GameZonePage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/parent-dashboard" element={<ParentDashboard />} />
         {/* Add more routes as needed */}
       </Routes>
     </div>
