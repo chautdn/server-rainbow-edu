@@ -14,6 +14,8 @@ import {CurriculumPage} from "./pages/CurriculumPage/CurriculumPage";
 import {GameZonePage} from "./pages/GameZonePage/GameZonePage";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
+import { LessonPage } from "./pages/LessonPage/LessonPage";
+import ShuffleCard from "./components/game/shuffleCard/shuffleCard";
 function App() {
   const location = useLocation();
   const isNoFloating = [
@@ -21,7 +23,9 @@ function App() {
     "/home", 
     "/game-zone", 
     "/settings", 
-    "/parent-dashboard"
+    "/parent-dashboard",
+    "/lesson",
+    "/shuffleGame"
   ].includes(location.pathname);
 
   return (
@@ -74,6 +78,8 @@ function App() {
         <Route path="/game-zone" element={<GameZonePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="/lesson" element={<LessonPage />} />
+        <Route path="/shuffleGame" element={<ShuffleCard />} />
         {/* Add more routes as needed */}
       </Routes>
     </div>

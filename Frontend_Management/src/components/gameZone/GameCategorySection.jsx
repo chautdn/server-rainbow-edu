@@ -1,17 +1,26 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const dummyGames = [
+    { title: "Memory Match", tag: "Memory", path: "/shuffleGame" },
     { title: "Chef Yum Yum", tag: "Cooking" },
     { title: "Garage Master", tag: "Construction" },
     { title: "The Coloring Adventure", tag: "Coloring" },
     { title: "Let's Dance", tag: "Dancing" },
     { title: "Pixel Party", tag: "Color & Learn" },
     { title: "Band Jam", tag: "Music" },
-    { title: "Magic Canvas", tag: "Sketching" },
     { title: "The Dancing Jungle", tag: "Decoration" },
 ];
 
 export default function GameCategorySection({ title }) {
+    const navigate = useNavigate();
+
+    const handleGameClick = (game) => {
+        if (game.path) {
+            navigate(game.path);
+        }
+    };
+
     return (
         <div className="rounded-3xl bg-[#1c1c69] shadow-lg p-6 font-sans">
             {/* Title */}
@@ -24,7 +33,8 @@ export default function GameCategorySection({ title }) {
                 {dummyGames.map((game, i) => (
                     <div
                         key={i}
-                        className="bg-[#0a0a3f] text-white rounded-xl p-3 transition hover:brightness-110 flex flex-col"
+                        onClick={() => handleGameClick(game)}
+                        className="bg-[#0a0a3f] text-white rounded-xl p-3 transition hover:brightness-110 flex flex-col cursor-pointer"
                     >
                         <div className="h-28 md:h-32 rounded-md mb-3 overflow-hidden bg-[#ccc]">
                             {/* Placeholder hình ảnh, bạn có thể thay bằng <img src={game.image} /> nếu có */}
