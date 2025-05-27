@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import Input from "../components/authPageComponents/Input";
+import Input from "../../components/authPageComponents/Input";
 import { Loader, Lock, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import PasswordStrengthMeter from "../components/authPageComponents/PasswordStrengthMeter";
-import { useAuthStore } from "../store/authStore";
+import PasswordStrengthMeter from "../../components/authPageComponents/PasswordStrengthMeter";
+import { useAuthStore } from "../../store/authStore";
 import { GoogleLogin } from "@react-oauth/google";
 
 const SignUpPage = () => {

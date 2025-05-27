@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Loader } from "lucide-react";
-import { Link } from "react-router-dom";
-import Input from "../components/authPageComponents/Input";
-import { useAuthStore } from "../store/authStore";
+import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/authPageComponents/Input";
+import { useAuthStore } from "../../store/authStore";
 import { GoogleLogin } from "@react-oauth/google";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const { login, isLoading, error, googleLogin } = useAuthStore();
+  const { login, isLoading, error, googleLogin, isAuthenticated } =
+    useAuthStore();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home"); // Redirect to landing page when authenticated
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
