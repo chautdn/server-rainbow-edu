@@ -19,9 +19,6 @@ import LessonPage from "./pages/LessonPage/LessonPage";
 import { ShapeRace } from "./pages";
 import GamePage from "./pages/GamePage/GamePage";
 
-// Import your game components (you'll need to add these)
-// import ShapeRace from "./pages/Games/ShapeRace";
-// import CountingGame from "./pages/Games/CountingGame";
 
 function App() {
   return (
@@ -36,7 +33,6 @@ function App() {
 
       <Route element={<MainLayout />}>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/landingpage" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
