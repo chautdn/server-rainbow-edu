@@ -55,14 +55,6 @@ export const gameLessons = [
                 imgUrl: 'https://www.cokogames.com/wp-content/uploads/2020/05/geometric-shape-race.jpeg'
             },
             {
-                gameId: 4,
-                catagory: 'counting',
-                title: 'Play bingo !',
-                description: 'Play number bingo game',
-                link: '/game-lessons/games/counting',
-                imgUrl: 'https://www.cokogames.com/wp-content/uploads/2020/05/geometric-shape-race.jpeg'
-            },
-            {
                 gameId: 5,
                 catagory: 'counting',
                 title: 'Call out number!',

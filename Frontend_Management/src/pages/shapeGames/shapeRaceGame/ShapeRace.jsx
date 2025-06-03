@@ -20,7 +20,7 @@ const shapes = [
   { name: "Hexagon", symbol: "⬢" },
   { name: "Octagon", symbol: "⯃" },
   { name: "Ellipse", symbol: "⬭" },
-  { name: "Parallelogram", symbol: "⧦" },
+  { name: "Parallelogram", symbol: "▰" },
   { name: "Trapezoid", symbol: "⏢" },
 ];
 

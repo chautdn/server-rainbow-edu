@@ -95,7 +95,7 @@ const CustomNavbar = ({ isCompact }) => {
           label={isCompact ? "" : "Game Zone"}
           active={currentPath === "/game-lessons"}
           path="/game-lessons"
-          isCompact={isCompact}
+          isCompact={isCompact} //clm tml dung game zone sao xoa cmnr thanh game lessons
         />
       </div>
 
@@ -151,6 +151,6 @@ const CustomNavbar = ({ isCompact }) => {
     </div>
     
   );
-};
+};  
 
 export default CustomNavbar;

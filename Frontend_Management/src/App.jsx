@@ -19,25 +19,8 @@ import LessonPage from "./pages/LessonPage/LessonPage";
 import { ShapeRace } from "./pages";
 import GamePage from "./pages/GamePage/GamePage";
 
-// Import your game components (you'll need to add these)
-// import ShapeRace from "./pages/Games/ShapeRace";
-// import CountingGame from "./pages/Games/CountingGame";
-import {GameZonePage} from "./pages/GameZonePage/GameZonePage";
-import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
-import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
-import ShuffleCard from "./components/game/shuffleCard/shuffleCard";
-function App() {
-  const location = useLocation();
-  const isNoFloating = [
-    "/curriculum", 
-    "/home", 
-    "/game-zone", 
-    "/settings", 
-    "/parent-dashboard",
-    "/lesson",
-    "/shuffleGame"
-  ].includes(location.pathname);
 
+function App() {
   return (
     <Routes>
       <Route element={<AuthLayout />}>
@@ -50,15 +33,9 @@ function App() {
 
       <Route element={<MainLayout />}>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/landingpage" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
-        <Route path="/game-zone" element={<GameZonePage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/parent-dashboard" element={<ParentDashboard />} />
-        <Route path="/lesson" element={<LessonPage />} />
-        <Route path="/shuffleGame" element={<ShuffleCard />} />
         <Route path="/game-lessons" element={<GameLessons />} />
         <Route path="/game-lessons/games/:id" element={<AllGames />} />
         <Route path="/all-games/:id" element={<AllGames />} />
