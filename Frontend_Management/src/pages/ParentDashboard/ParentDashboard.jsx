@@ -1,20 +1,17 @@
-import PlayerSelector from "../../components/dashBoard/PlayerSelector";
-import WeeklySummary from "../../components/dashBoard/WeeklySummary";
-import CourseProgress from "../../components/dashBoard/CourseProgress";
+import PlayerSelector from "../../components/dashBoard/player-selector";
+import WeeklySummary from "../../components/dashBoard/weekly-summary";
+import CourseProgress from "../../components/dashBoard/course-progress";
 import ParentDashboardMenu from "../../components/navbar/ParentDashboardMenu";
 
 export const ParentDashboard = () => {
     return (
-        <div className="bg-[#f1f0f9] min-h-screen p-6">
-            <ParentDashboardMenu />
-            <div className="max-w-3xl mx-auto flex flex-col">
-                <div className="mb-6">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+            <div className="container mx-auto px-4 py-6 max-w-7xl">
+                <ParentDashboardMenu />
+
+                <div className="space-y-6">
                     <PlayerSelector />
-                </div>
-                <div className="mb-6">
                     <WeeklySummary />
-                </div>
-                <div>
                     <CourseProgress />
                 </div>
             </div>

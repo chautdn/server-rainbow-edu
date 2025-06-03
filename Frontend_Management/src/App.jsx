@@ -18,8 +18,8 @@ import AllGames from "./pages/allGames/AllGames";
 import LessonPage from "./pages/LessonPage/LessonPage";
 import { ShapeRace } from "./pages";
 import GamePage from "./pages/GamePage/GamePage";
-
-
+import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 function App() {
   return (
     <Routes>
@@ -42,7 +42,9 @@ function App() {
         <Route path="/game-lessons/game-lesson/:id" element={<LessonPage />} />
         <Route path="/game-lessons/games/shapes/:id" element={<ShapeRace />} />
         <Route path="/game-lessons/games/counting/:id" element={<GamePage />} />
-
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       <Route path="*" element={<LoginPage />} />

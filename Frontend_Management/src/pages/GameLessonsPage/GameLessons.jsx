@@ -22,7 +22,7 @@ const GameLessons = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200">
       {/* Animated Background Elements */}
       <FallingNumbers />
       <FallingShapes />
