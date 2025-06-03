@@ -3,7 +3,9 @@ import CustomNavbar from '../../components/navbar/CustomNavbar';
 import Tabs from '../../components/curriculum/Tabs';
 import LearningPath from '../../components/curriculum/LearningPath';
 import CategorySection from '../../components/curriculum/CategorySection';
-import BackgroundStars from '../../components/BackgroundStars';
+import FallingNumbers from "../../components/sharedComponents/FallingNumbers";
+import FallingShapes from "../../components/shapes/FallingShapes";
+import ShapesAnimation from "../../components/sharedComponents/ShapesAnimation";
 
 export const CurriculumPage = () => {
     const learningPathRef = useRef(null);
@@ -62,12 +64,12 @@ export const CurriculumPage = () => {
         const navbarHeight = navbar ? navbar.offsetHeight : 100;
 
         const elementPosition = element.getBoundingClientRect().top;
-        //const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
         const startPosition = window.pageYOffset;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight + 20; // Thêm 20px padding
         const distance = offsetPosition - startPosition;
         const duration = 1000;
         let start = null;
-        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight + 20; // Thêm 20px padding
+
         const animation = (currentTime) => {
             if (start === null) start = currentTime;
             const timeElapsed = currentTime - start;
@@ -102,25 +104,113 @@ export const CurriculumPage = () => {
     };
 
     return (
-        <div className="relative min-h-screen">
-            <BackgroundStars />
+        <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200 overflow-hidden">
+            {/* Animated Background Elements */}
+            <FallingNumbers />
+            <FallingShapes />
+            <ShapesAnimation />
+            
+            {/* Orbiting Icons */}
+            <span className="text-7xl orbiting-icon2 fixed top-20 right-10 z-0">
+                🚀
+            </span>
+            <span className="text-8xl orbiting-icon fixed bottom-20 left-10 z-0">
+                🚀
+            </span>
+            
+            {/* Additional floating educational icons */}
+            <span className="text-6xl fixed top-1/3 left-5 z-0 animate-bounce" style={{animationDelay: '0.5s'}}>
+                📚
+            </span>
+            <span className="text-5xl fixed top-1/2 right-5 z-0 animate-bounce" style={{animationDelay: '1s'}}>
+                ✏️
+            </span>
+            <span className="text-6xl fixed bottom-1/3 left-1/4 z-0 animate-bounce" style={{animationDelay: '1.5s'}}>
+                🎓
+            </span>
+            <span className="text-5xl fixed top-1/4 right-1/3 z-0 animate-bounce" style={{animationDelay: '2s'}}>
+                📖
+            </span>
+            
             <main className="relative z-10">
                 <div>
-                    <div className="sticky top-0 z-50 bg-[#0a085f]">
+                    <div className="sticky top-0 z-50">
                         <CustomNavbar isCompact={isCompact} />
-                        <div className="w-full h-12 bg-black/30 rounded-b-2xl blur-sm"></div>
+                        <div className="w-full h-12 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-blue-500/30 rounded-b-2xl blur-sm"></div>
                         <Tabs onTabClick={handleScrollTo} activeTab={activeTab} />
                     </div>
-                    <div className="p-6 max-w-7xl mx-auto " ref={learningPathRef}>
-                        <LearningPath />
+                    
+                    <div className="p-6 max-w-7xl mx-auto" ref={learningPathRef}>
+                        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-white/50 p-8 mb-8">
+                            <LearningPath />
+                        </div>
                     </div>
 
                     <div className="p-6 max-w-7xl mx-auto" ref={mathCategoryRef}>
-                        <CategorySection title="Chương trình toán học" active={activeTab === "math"} />
+                        <div className="bg-gradient-to-br from-blue-100/90 to-cyan-100/90 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-white/50 p-8 mb-8">
+                            <CategorySection title="Chương trình toán học" active={activeTab === "math"} />
+                        </div>
+                        
+                        {/* Fun Math Elements */}
+                        <div className="flex justify-center space-x-6 mt-8 mb-8">
+                            <div className="bg-blue-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white">
+                                🔢
+                            </div>
+                            <div className="bg-cyan-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.2s'}}>
+                                ➕
+                            </div>
+                            <div className="bg-teal-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.4s'}}>
+                                ➖
+                            </div>
+                            <div className="bg-blue-400 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.6s'}}>
+                                ✖️
+                            </div>
+                        </div>
                     </div>
 
                     <div className="p-6 max-w-7xl mx-auto" ref={vietnameseCategoryRef}>
-                        <CategorySection title="Chương trình Tiếng Việt" active={activeTab === "vietnamese"} />
+                        <div className="bg-gradient-to-br from-pink-100/90 to-rose-100/90 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-white/50 p-8 mb-8">
+                            <CategorySection title="Chương trình Tiếng Việt" active={activeTab === "vietnamese"} />
+                        </div>
+                        
+                        {/* Fun Vietnamese Elements */}
+                        <div className="flex justify-center space-x-6 mt-8 mb-8">
+                            <div className="bg-pink-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white">
+                                📝
+                            </div>
+                            <div className="bg-rose-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.2s'}}>
+                                📖
+                            </div>
+                            <div className="bg-red-300 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.4s'}}>
+                                🗣️
+                            </div>
+                            <div className="bg-pink-400 p-6 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.6s'}}>
+                                📚
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Bottom Fun Section */}
+                    <div className="p-6 max-w-7xl mx-auto text-center mb-12">
+                        <div className="bg-gradient-to-r from-yellow-200/90 to-orange-200/90 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-white/50 p-8">
+                            <h2 className="text-3xl font-bold text-orange-700 mb-4 drop-shadow-lg">
+                                Keep Learning & Having Fun! 🌟
+                            </h2>
+                            <p className="text-lg text-orange-600 font-semibold">
+                                Explore all subjects and unlock your potential!
+                            </p>
+                            <div className="flex justify-center space-x-4 mt-6">
+                                <div className="bg-yellow-300 p-4 rounded-full shadow-xl animate-bounce border-2 border-white">
+                                    🏆
+                                </div>
+                                <div className="bg-orange-300 p-4 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.3s'}}>
+                                    🎉
+                                </div>
+                                <div className="bg-red-300 p-4 rounded-full shadow-xl animate-bounce border-2 border-white" style={{animationDelay: '0.6s'}}>
+                                    🌈
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>

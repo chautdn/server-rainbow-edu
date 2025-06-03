@@ -1,7 +1,7 @@
 import React from "react";
 import NavItem from "./NavItem";
 import { FaHome, FaBookOpen, FaGamepad, FaPrint, FaUserShield, FaStar } from "react-icons/fa";
-import { PiStudentBold } from "react-icons/pi"; // Thay thế avatar bằng icon tương tự
+import { PiStudentBold } from "react-icons/pi";
 import { useLocation } from "react-router-dom";
 
 const CustomNavbar = ({ isCompact }) => {
@@ -12,33 +12,38 @@ const CustomNavbar = ({ isCompact }) => {
     <div
       className={`text-white flex items-center justify-between transition-all duration-500 ${
         isCompact ? "h-28 py-0" : "h-52 p-6"
-      } bg-[#0a085f]`}
-      style={{ minHeight: isCompact ? 112 : 208 }}
+      } bg-gradient-to-r from-pink-400 via-purple-500 via-blue-500 to-cyan-400 shadow-2xl border-b-4 border-white/50`}
+      style={{ 
+        minHeight: isCompact ? 112 : 208,
+        background: isCompact 
+          ? 'linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #00d2d3, #ff9ff3, #54a0ff)'
+          : 'linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #00d2d3, #ff9ff3, #54a0ff, #5f27cd)'
+      }}
     >
       {/* Left section */}
       <div className={`flex ${isCompact ? 'flex-row items-center space-x-4 pl-8' : 'flex-col items-start space-y-6 pl-8'}`}>
         <button
-          className={`rounded-full flex items-center justify-center shadow-md transition-all duration-500 ${
+          className={`rounded-full flex items-center justify-center shadow-xl transition-all duration-500 hover:scale-110 border-2 border-white/50 ${
             isCompact
-              ? "w-12 h-12 bg-[#3535a5] p-0"
-              : "bg-blue-500 hover:bg-blue-600 px-4 py-2 w-auto h-auto"
+              ? "w-12 h-12 bg-gradient-to-r from-yellow-300 to-orange-400 p-0 text-white"
+              : "bg-gradient-to-r from-yellow-300 to-orange-400 hover:from-yellow-400 hover:to-orange-500 px-6 py-3 w-auto h-auto text-white font-bold"
           }`}
         >
-          <FaUserShield className={isCompact ? "text-2xl" : undefined} />
-          {!isCompact && <span>Parents</span>}
+          <FaUserShield className={isCompact ? "text-2xl drop-shadow-lg" : "text-xl drop-shadow-lg"} />
+          {!isCompact && <span className="ml-2 drop-shadow-lg">Parents</span>}
         </button>
         {isCompact ? (
-          <div className="w-12 h-12 rounded-full bg-pink-400 flex items-center justify-center">
-            <PiStudentBold className="text-2xl" />
+          <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 flex items-center justify-center shadow-xl border-2 border-white/50">
+            <PiStudentBold className="text-2xl text-white drop-shadow-lg" />
           </div>
         ) : (
-          <div className="bg-[#1c1a73] px-3 py-1 rounded-full flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full bg-pink-400 flex items-center justify-center">
-              <PiStudentBold className="text-xl" />
+          <div className="bg-gradient-to-r from-purple-400/90 to-indigo-500/90 backdrop-blur-sm px-4 py-3 rounded-full flex items-center space-x-3 shadow-xl border-2 border-white/50">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 flex items-center justify-center shadow-lg border border-white/30">
+              <PiStudentBold className="text-xl text-white drop-shadow-sm" />
             </div>
-            <span>Level 0</span>
-            <FaStar className="text-yellow-400" />
-            <div className="bg-[#2e2c83] text-sm px-2 py-1 rounded-full">1</div>
+            <span className="text-white font-bold text-lg drop-shadow-lg">Level 0</span>
+            <FaStar className="text-yellow-300 drop-shadow-lg text-xl" />
+            <div className="bg-gradient-to-r from-cyan-400 to-blue-500 text-sm px-3 py-2 rounded-full text-white font-bold shadow-lg border border-white/30">1</div>
           </div>
         )}
       </div>
@@ -78,26 +83,26 @@ const CustomNavbar = ({ isCompact }) => {
       {/* Right section */}
       <div className={`flex flex-col items-end ${isCompact ? "space-y-0 pr-8" : "space-y-4 pr-8"}`}>
         {!isCompact && (
-          <div className="flex items-center space-x-1">
-            <span className="text-white font-bold">Rainbow</span>
-            <span className="text-blue-300 font-bold">Learn</span>
-            <span className="bg-blue-400 text-white px-2 rounded text-sm">STARTER</span>
+          <div className="flex items-center space-x-3 bg-gradient-to-r from-white/20 to-cyan-200/30 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-white/50 shadow-xl">
+            <span className="text-white font-black text-xl drop-shadow-lg">Rainbow</span>
+            <span className="text-yellow-200 font-black text-xl drop-shadow-lg">Learn</span>
+            <span className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg border border-white/30">STARTER</span>
           </div>
         )}
         <button
-          className={`flex items-center justify-center shadow-md transition-all duration-500 font-semibold ${
+          className={`flex items-center justify-center shadow-xl transition-all duration-500 font-bold hover:scale-110 border-3 border-white/70 ${
             isCompact
-              ? "w-36 h-12 bg-[#e3e6f5] text-[#3535a5] text-base px-0 py-0"
-              : "bg-white text-black px-4 py-2 rounded-full"
+              ? "w-40 h-12 bg-gradient-to-r from-lime-300 to-green-400 text-green-800 text-base px-0 py-0"
+              : "bg-gradient-to-r from-lime-300 to-green-400 text-green-800 px-8 py-4 hover:from-lime-400 hover:to-green-500"
           } rounded-full`}
         >
-          <span>{isCompact ? "Unlock All" : "Unlock All"}</span>
-          <FaUserShield className={isCompact ? "ml-2 text-2xl" : undefined} />
+          <span className="drop-shadow-sm">{isCompact ? "Unlock All" : "Unlock All"}</span>
+          <FaUserShield className={isCompact ? "ml-2 text-xl drop-shadow-sm" : "ml-3 text-lg drop-shadow-sm"} />
         </button>
         {!isCompact && (
-          <div className="flex items-center space-x-2">
-            <span className="bg-blue-400 text-white px-2 rounded-full text-sm">2</span>
-            <span className="text-cyan-200 text-sm">Free activities left today!</span>
+          <div className="flex items-center space-x-3 bg-gradient-to-r from-cyan-300/30 to-blue-400/30 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-white/50 shadow-xl">
+            <span className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-3 py-2 rounded-full text-sm font-bold shadow-lg border border-white/30">2</span>
+            <span className="text-white text-sm font-bold drop-shadow-lg">Free activities left today!</span>
           </div>
         )}
       </div>
