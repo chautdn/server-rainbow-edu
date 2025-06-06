@@ -24,8 +24,8 @@ const UserSchema = new Schema(
     updatedAt: { type: Date, default: new Date().getTime() },
     role: {
       type: String,
-      enum: ["CUSTOMER", "ADMIN", "STAFF"],
-      default: "CUSTOMER",
+      enum: ["PARENTS", "ADMIN", "STAFF"],
+      default: "PARENTS",
     },
     isVerified: { type: Boolean, default: false },
     resetPasswordToken: String,

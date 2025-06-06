@@ -2,7 +2,7 @@ import React from 'react'
 
 const ShapesAnimation = () => {
     return (
-        <div >
+        <div className="fixed inset-0 w-screen h-screen overflow-hidden pointer-events-none">
             <div className="absolute top-0 right-0 w-32 h-32 bg-red-300 rounded-full opacity-75 animate-ping text-7xl">☀</div>
             <div className="absolute top-0 left-0 w-32 h-32 bg-red-300 rounded-full opacity-75 animate-ping text-7xl">⬟</div>
             <div className="absolute top-[55%] right-0 w-32 h-32 bg-yellow-300 rounded-full opacity-75 animate-spin-slow"></div>
