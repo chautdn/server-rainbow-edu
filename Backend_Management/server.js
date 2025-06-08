@@ -3,6 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./src/database_config/mongo_config");
 const UserRouter = require("./src/routes/userRoute");
+const courseRoutes = require("./src/routes/courseRoutes");
 const handleError = require("./src/utils/errorHandler");
 require("dotenv").config({ path: "./config.env" });
 
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
 
 //Middleware Routing
 app.use("/user", UserRouter);
-
+app.use("/course", courseRoutes);
 ////Error Handler Middleware
 app.use(handleError);
 

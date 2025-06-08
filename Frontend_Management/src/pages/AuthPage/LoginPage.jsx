@@ -15,19 +15,31 @@ const LoginPage = () => {
     useAuthStore();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/home"); // Redirect to landing page when authenticated
+    // Check if user is already authenticated
+    const token = localStorage.getItem("token");
+    if (token || isAuthenticated) {
+      navigate("/home");
     }
   }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    try {
+      const response = await login(email, password);
+      if (response?.data?.user) {
+        navigate("/home");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+    }
   };
 
   const handleGoogleLogin = async (credentialResponse) => {
     try {
-      await googleLogin(credentialResponse.credential);
+      const response = await googleLogin(credentialResponse.credential);
+      if (response?.data?.user) {
+        navigate("/home");
+      }
     } catch (error) {
       console.error("Google login failed", error);
     }
@@ -114,7 +126,7 @@ const LoginPage = () => {
       </div>
       <div className="px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center">
         <p className="text-sm text-gray-400">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link to="/signup" className="text-blue-400 hover:underline">
             Sign up
           </Link>

@@ -21,6 +21,7 @@ import GamePage from "./pages/GamePage/GamePage";
 import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 import Lesson1 from './pages/lesson-detail/vietnamese/Lesson1';
+import Lesson2 from './pages/lesson-detail/vietnamese/Lesson2';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/parent-dashboard" element={<ParentDashboard />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/lesson-detail/vietnamese/lesson1" element={<Lesson1 />} />
+        <Route path="/lesson-detail/vietnamese/lesson2" element={<Lesson2 />} />
       </Route>
 
       <Route path="*" element={<LoginPage />} />

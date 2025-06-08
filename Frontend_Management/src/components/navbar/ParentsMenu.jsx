@@ -15,7 +15,7 @@ const ParentsMenu = ({ onClose }) => {
             <div className="flex justify-between items-start">
                 <div className="flex items-center gap-2 text-xl font-bold">
                     <FaUserShield />
-                    <span>Parents</span>
+                    <span>Phụ huynh</span>
                 </div>
                 <button onClick={onClose} className="text-2xl">
                     <FaTimes />
@@ -24,15 +24,16 @@ const ParentsMenu = ({ onClose }) => {
 
             <div className="mt-12 space-y-10 pl-4">
                 <div onClick={() => handleNavigation("/settings")} className="cursor-pointer hover:opacity-80 transition-opacity">
-                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Settings →</h3>
-                    <p className="text-gray-200">Parent Details, Subscription Management, Child Details</p>
+                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Cài đặt →</h3>
+                    <p className="text-gray-200">Thông tin phụ huynh, Quản lý đăng ký, Thông tin học viên</p>
                 </div>
                 <div onClick={() => handleNavigation("/parent-dashboard")} className="cursor-pointer hover:opacity-80 transition-opacity">
-                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Reports →</h3>
-                    <p className="text-gray-200">Child Activity, Curriculum Progress</p>
+                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Báo cáo →</h3>
+                    <p className="text-gray-200">Hoạt động học tập, Tiến độ chương trình</p>
                 </div>
                 <div onClick={() => handleNavigation("/help")} className="cursor-pointer hover:opacity-80 transition-opacity">
-                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Help →</h3>
+                    <h3 className="text-xl font-semibold border-b border-white w-fit mb-1">Trợ giúp →</h3>
+                    <p className="text-gray-200">Hướng dẫn sử dụng, Câu hỏi thường gặp</p>
                 </div>
             </div>
         </div>

@@ -26,15 +26,14 @@ const transporter = nodemailer.createTransport({
 });
 
 // JWT Token Generator
-const signToken = (id) =>
-  jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+const signToken = (id, role) =>
+  jwt.sign({ id, role }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: process.env.ACCESS_TOKEN_LIFE,
   });
 
 // Send JWT Token in Response
 const createSendToken = (user, statusCode, res) => {
-  const token = signToken(user._id);
-  console.log("Generated Token:", token); // Debugging log
+  const token = signToken(user._id, user.role); // Thêm role vào token
 
   const cookieOptions = {
     expires: new Date(
@@ -49,10 +48,11 @@ const createSendToken = (user, statusCode, res) => {
 
   res.status(statusCode).json({
     status: "success",
-    token, // Make sure token is in the response
+    token,
     data: { user },
   });
 };
+
 
 // Send OTP
 const sendOTP = async (email, verificationToken) => {
@@ -230,19 +230,15 @@ exports.resendEmailVerification = catchAsync(async (req, res, next) => {
 // Login
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log("Login request received");
   console.log(email);
   console.log(password);
-
+  console.log("Login request received");
   if (!email || !password) {
     return next(new AppError("Please provide email and password!", 400));
   }
 
   const user = await User.findOne({ email }).select("+password");
-
-  console.log(`Hashed password from DB: ${user.name}`);
-  console.log(`Hashed password from DB: ${user.password}`);
-  console.log(`Password entered: ${password}`);
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));

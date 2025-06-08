@@ -52,7 +52,7 @@ const CustomNavbar = ({ isCompact }) => {
               isCompact ? "text-2xl drop-shadow-lg" : "text-xl drop-shadow-lg"
             }
           />
-          {!isCompact && <span className="ml-2 drop-shadow-lg">Parents</span>}
+          {!isCompact && <span className="ml-2 drop-shadow-lg">Phụ huynh</span>}
         </button>
         {isCompact ? (
           <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 flex items-center justify-center shadow-xl border-2 border-white/50">
@@ -64,7 +64,7 @@ const CustomNavbar = ({ isCompact }) => {
               <PiStudentBold className="text-xl text-white drop-shadow-sm" />
             </div>
             <span className="text-white font-bold text-lg drop-shadow-lg">
-              Level 0
+              Cấp độ 0
             </span>
             <FaStar className="text-yellow-300 drop-shadow-lg text-xl" />
             <div className="bg-gradient-to-r from-cyan-400 to-blue-500 text-sm px-3 py-2 rounded-full text-white font-bold shadow-lg border border-white/30">
@@ -78,24 +78,24 @@ const CustomNavbar = ({ isCompact }) => {
       <div className="flex items-center space-x-8">
         <NavItem
           icon={<FaHome />}
-          label={isCompact ? "" : "Home"}
+          label={isCompact ? "" : "Trang chủ"}
           active={currentPath === "/home"}
           path="/home"
           isCompact={isCompact}
         />
         <NavItem
           icon={<FaBookOpen />}
-          label={isCompact ? "" : "Curriculum"}
+          label={isCompact ? "" : "Chương trình học"}
           active={currentPath === "/curriculum"}
           path="/curriculum"
           isCompact={isCompact}
         />
         <NavItem
           icon={<FaGamepad />}
-          label={isCompact ? "" : "Game Zone"}
+          label={isCompact ? "" : "Khu vực trò chơi"}
           active={currentPath === "/game-lessons"}
           path="/game-lessons"
-          isCompact={isCompact} //clm tml dung game zone sao xoa cmnr thanh game lessons
+          isCompact={isCompact}
         />
       </div>
 
@@ -126,7 +126,7 @@ const CustomNavbar = ({ isCompact }) => {
           } rounded-full`}
         >
           <span className="drop-shadow-sm">
-            {isCompact ? "Unlock All" : "Unlock All"}
+            {isCompact ? "Mở khóa tất cả" : "Mở khóa tất cả"}
           </span>
           <FaUserShield
             className={
@@ -142,15 +142,14 @@ const CustomNavbar = ({ isCompact }) => {
               2
             </span>
             <span className="text-white text-sm font-bold drop-shadow-lg">
-              Free activities left today!
+              Hoạt động miễn phí còn lại hôm nay!
             </span>
           </div>
         )}
-              </div>
+      </div>
       {showParentsMenu && <ParentsMenu onClose={() => setShowParentsMenu(false)} />}
     </div>
-    
   );
-};  
+};
 
 export default CustomNavbar;

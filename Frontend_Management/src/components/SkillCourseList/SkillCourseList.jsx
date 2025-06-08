@@ -1,4 +1,7 @@
-const SkillCourseList = ({ skillName, courses, onViewAll }) => {
+import React from "react";
+import PropTypes from "prop-types";
+
+const SkillCourseList = ({ skillName, courses, onViewAll, variant = "" }) => {
   return (
     <div
       className={`max-w-[1200px] mx-auto rounded-2xl py-10 px-6 my-8 shadow-md bg-[#4441d3]`}
@@ -12,7 +15,7 @@ const SkillCourseList = ({ skillName, courses, onViewAll }) => {
           onClick={onViewAll}
           className="text-white font-bold text-base px-8 py-2 rounded-full border-2 border-white bg-[#6366d6] flex items-center gap-2 shadow hover:bg-[#7a7cf0] transition-all duration-200"
         >
-          Discover More <span className="ml-2 text-xl">→</span>
+          Xem thêm <span className="ml-2 text-xl">→</span>
         </button>
       </div>
 
@@ -23,20 +26,45 @@ const SkillCourseList = ({ skillName, courses, onViewAll }) => {
             key={course.id}
             className="bg-[#120f87] rounded-xl p-3 text-white shadow-md hover:scale-105 transition-transform duration-200"
           >
-            {/* Image Placeholder */}
+            {/* Course Image */}
             <div className="h-28 rounded-xl bg-white mb-3 border-4 border-white overflow-hidden">
-              {/* If you have an image, uncomment this and use course.image */}
-              {/* <img src={course.image} alt={course.name} className="w-full h-full object-cover" /> */}
+              <img 
+                src={course.image} 
+                alt={course.title} 
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Course Name */}
-            <div className="text-base font-bold mb-1 truncate">{course.name}</div>
-            {/* Course Description (e.g., "33 skills") */}
+            <div className="text-base font-bold mb-1 truncate">{course.title}</div>
+            {/* Course Description */}
             <div className="text-xs text-gray-300">{course.description}</div>
+            {/* Course Level and Duration */}
+            <div className="flex justify-between items-center mt-2 text-xs">
+              <span className="bg-blue-500 px-2 py-1 rounded">{course.level}</span>
+              <span className="text-gray-300">{course.duration}</span>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
+};
+
+SkillCourseList.propTypes = {
+  skillName: PropTypes.string.isRequired,
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      level: PropTypes.string.isRequired,
+      duration: PropTypes.string.isRequired,
+      progress: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  onViewAll: PropTypes.func.isRequired,
+  variant: PropTypes.string,
 };
 
 export default SkillCourseList;
