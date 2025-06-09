@@ -29,6 +29,14 @@ const courseSchema = new mongoose.Schema({
     enum: ['reading', 'writing'],
     default: 'reading'
   },
+  lessonId: {
+    type: String,
+    required: true
+  },
+  tag: {
+    type: String,
+    required: true
+  },
   progress: {
     type: Number,
     default: 0,
