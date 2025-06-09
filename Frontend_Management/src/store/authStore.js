@@ -21,7 +21,6 @@ export const useAuthStore = create((set) => ({
       });
   
       const user = response.data.data?.user || null;
-  
       set({
         user: user,
         isAuthenticated: false, // Still need email verification
@@ -92,7 +91,7 @@ export const useAuthStore = create((set) => ({
       });
   
       const user = response.data?.data?.user || null;
-      const token = response.data?.data?.token || null;
+      const token = response.data?.jwt || response.data?.data?.token || response.data?.token || null;
   
       if (user && token) {
         set({
@@ -103,17 +102,22 @@ export const useAuthStore = create((set) => ({
   
         // Store token in localStorage after successful login
         localStorage.setItem("token", token);
+        console.log("Login successful, token saved:", token);
       } else {
-        // Use the error store instead of local state
-        useErrorStore.getState().setError("Login failed. Please try again.");
-        set({ isLoading: false });
+        set({ 
+          isLoading: false,
+          error: "Login failed. Please check your credentials and try again."
+        });
       }
   
       return response.data;
     } catch (error) {
-      // Use the displayMessage property set by our axios interceptor
-      useErrorStore.getState().setError(error.displayMessage);
-      set({ isLoading: false });
+      console.error("Login error:", error.response?.data);
+      const errorMessage = error.response?.data?.message || "Login failed. Please try again.";
+      set({ 
+        isLoading: false,
+        error: errorMessage
+      });
       throw error;
     }
   },

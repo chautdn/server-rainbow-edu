@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import axiosInstance from "../../components/utils/AxiosInstance";
 import CustomNavbar from "../../components/navbar/CustomNavbar";
 import SkillCourseList from "../../components/SkillCourseList/SkillCourseList";
-import { sampleCourses } from "../../data/courseData";
+import { readingCourses, writingCourses } from "../../data/courseData";
 import FallingNumbers from "../../components/sharedComponents/FallingNumbers";
 import FallingShapes from "../../components/shapes/FallingShapes";
 import ShapesAnimation from "../../components/sharedComponents/ShapesAnimation";
@@ -22,7 +23,7 @@ export const HomePage = () => {
   }, []);
   
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200">
       {/* Animated Background Elements */}
       <FallingNumbers />
       <FallingShapes />
@@ -44,13 +45,13 @@ export const HomePage = () => {
           <div className="p-6">
             <SkillCourseList
               skillName="KĨ NĂNG ĐỌC"
-              courses={sampleCourses}
-              onViewAll={() => alert("Xem thêm ĐỌC")}
+              courses={readingCourses}
+              onViewAll={() => alert("Xem thêm khóa học đọc")}
             />
             <SkillCourseList
               skillName="KĨ NĂNG VIẾT"
-              courses={sampleCourses}
-              onViewAll={() => alert("Xem thêm VIẾT")}
+              courses={writingCourses}
+              onViewAll={() => alert("Xem thêm khóa học viết")}
               variant="blue-border"
             />
             
@@ -73,4 +74,4 @@ export const HomePage = () => {
       </main>
     </div>
   );
-};
+};  

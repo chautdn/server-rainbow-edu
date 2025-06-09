@@ -69,7 +69,7 @@ export const CurriculumPage = () => {
         const distance = offsetPosition - startPosition;
         const duration = 1000;
         let start = null;
-
+        
         const animation = (currentTime) => {
             if (start === null) start = currentTime;
             const timeElapsed = currentTime - start;
@@ -104,7 +104,7 @@ export const CurriculumPage = () => {
     };
 
     return (
-        <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200 overflow-hidden">
+        <div className="relative min-h-screen bg-gradient-to-r from-blue-200 via-yellow-100 to-pink-200">
             {/* Animated Background Elements */}
             <FallingNumbers />
             <FallingShapes />

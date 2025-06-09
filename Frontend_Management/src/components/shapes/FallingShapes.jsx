@@ -53,7 +53,7 @@ const FallingShapes = () => {
     }, [generateShape]);
 
     return (
-        <div className="falling-shapes">
+        <div className="falling-shapes w-screen h-screen overflow-hidden pointer-events-none">
             {fallingShapes.map((shape) => (
                 <div
                     key={shape.id}

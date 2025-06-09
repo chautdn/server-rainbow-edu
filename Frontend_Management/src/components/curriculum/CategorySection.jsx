@@ -1,8 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { getCourseNamesByGrade, courseImages } from '../../data/courseData';
 
 export default function CategorySection({ title, active }) {
+  const navigate = useNavigate();
   const grades = ['Pre-K', 'K', '1', '2', '3', '4', '5'];
   const [selectedGrade, setSelectedGrade] = React.useState('Pre-K');
+
+  const handleCourseClick = (lessonIndex) => {
+    if (title?.toLowerCase().includes('tiếng việt')) {
+      navigate(`/lesson-detail/vietnamese/lesson${lessonIndex + 1}`);
+    }
+  };
+
+  const currentCourseNames = getCourseNamesByGrade(selectedGrade);
 
   return (
     <div
@@ -10,11 +22,11 @@ export default function CategorySection({ title, active }) {
         ${active ? 'scale-100 opacity-100' : 'scale-90 opacity-60 pointer-events-none'}`}
     >
       {/* Header */}
-      <h2 className="font-extrabold text-2xl text-white tracking-wide mb-6">{title.toUpperCase()}</h2>
+      <h2 className="font-extrabold text-2xl text-white tracking-wide mb-6">{title?.toUpperCase()}</h2>
 
       {/* Grade */}
       <div className="flex items-center gap-4 mb-8 pl-5">
-        <span className="text-white text-lg font-semibold mr-1" style={{ minWidth: 70 }}>Lớp</span>
+        <span className="text-white text-lg font-semibold mr-1" style={{ minWidth: 70 }}>Lớp</span>
         {grades.map((grade) => (
           <button
             key={grade}
@@ -32,17 +44,36 @@ export default function CategorySection({ title, active }) {
 
       {/* Danh sách khóa học */}
       <div className="grid grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {currentCourseNames.map((courseName, i) => (
           <div
             key={i}
-            className="bg-[#302f5b] rounded-md text-white text-xs p-4 min-w-[220px] min-h-[220px] shadow-md hover:brightness-110 transition flex flex-col"
+            onClick={() => handleCourseClick(i)}
+            className="bg-[#302f5b] rounded-md text-white text-xs p-4 min-w-[220px] min-h-[220px] shadow-md hover:brightness-110 transition flex flex-col cursor-pointer"
           >
-            <div className="w-full h-32 bg-[#1f1f2e] rounded mb-4" />
-            <div className="font-semibold text-base mb-2">Tên khóa học</div>
-            <div className="text-xs">Kỹ năng</div>
+            {courseImages[courseName] ? (
+              <img
+                src={courseImages[courseName]}
+                alt={courseName}
+                className="w-full h-32 object-cover rounded mb-4"
+              />
+            ) : (
+              <div className="w-full h-32 bg-[#1f1f2e] rounded mb-4" />
+            )}
+            <div className="font-semibold text-base mb-2">{courseName}</div>
+            <div className="text-xs">Kỹ năng tiếng Việt</div>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+CategorySection.propTypes = {
+  title: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired
+};
+
+CategorySection.defaultProps = {
+  title: '',
+  active: false
+};

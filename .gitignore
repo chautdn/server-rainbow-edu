@@ -7,7 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+pnpm-lock.yaml
 # Dependency directories
 node_modules
 dist

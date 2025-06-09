@@ -13,6 +13,15 @@ import DashboardPage from "./pages/AuthPage/DashboardPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { CurriculumPage } from "./pages/CurriculumPage/CurriculumPage";
+import GameLessons from "./pages/GameLessonsPage/GameLessons";
+import AllGames from "./pages/allGames/AllGames";
+import LessonPage from "./pages/LessonPage/LessonPage";
+import { ShapeRace } from "./pages";
+import GamePage from "./pages/GamePage/GamePage";
+import { ParentDashboard } from "./pages/ParentDashboard/ParentDashboard";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
+import Lesson1 from './pages/lesson-detail/vietnamese/Lesson1';
+import Lesson2 from './pages/lesson-detail/vietnamese/Lesson2';
 
 function App() {
   return (
@@ -26,11 +35,21 @@ function App() {
       </Route>
 
       <Route element={<MainLayout />}>
-      <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/landingpage" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
+        <Route path="/game-lessons" element={<GameLessons />} />
+        <Route path="/game-lessons/games/:id" element={<AllGames />} />
+        <Route path="/all-games/:id" element={<AllGames />} />
+        <Route path="/game-lessons/game-lesson/:id" element={<LessonPage />} />
+        <Route path="/game-lessons/games/shapes/:id" element={<ShapeRace />} />
+        <Route path="/game-lessons/games/counting/:id" element={<GamePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/lesson-detail/vietnamese/lesson1" element={<Lesson1 />} />
+        <Route path="/lesson-detail/vietnamese/lesson2" element={<Lesson2 />} />
       </Route>
 
       <Route path="*" element={<LoginPage />} />
